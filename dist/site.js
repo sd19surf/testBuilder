@@ -30540,16 +30540,31 @@ var popup = require('../lib/popup'),
     showStyle = true,
     makiValues = require('../../data/maki.json'),
     maki = '',
-    psiValues = '';
+    psiValues = '',
+    severityValues = '',
+    criteriaValues = '',
+    threatProbValues = '';
+    
 
 for (var i = 0; i < makiValues.length; i++) {
     maki += '<option value="' + makiValues[i].icon + '">';
 }
-for (var i = 0; i < psi.length; i++) {
-    psiValues += '<option value=' + psi["Probabilty Severity Index"] + '">';
+for (var i = 0; i < psi.ConfidenceLevel.length; i++) {
+    psiValues += '<option value=' + psi.ConfidenceLevel[i].name + '>';
+}
+for (var i = 0; i < psi.Severity.length; i++) {
+    severityValues += '<option value=' + psi.Severity[i].name + '>';
+}
+for (var i = 0; i < psi.ThreatProbability.length; i++) {
+    threatProbValues += '<option value=' + psi.ThreatProbability[i].name + '>';
+}
+for (var i = 0; i < criteria.Criteria.length; i++) {
+    criteriaValues += '<option value=' + criteria.Criteria[i].name + '>';
 }
 
-
+function getColor(threatType){
+    document.getElementById("strokecolor").innerHTML = '<input type="color" value="#'+ criteria.Criteria[threatType].color +'"' + (!writable ? ' readonly' : '') + ' />"';
+}
 module.exports = function(context, readonly) {
 
     writable = !readonly;
@@ -30679,12 +30694,13 @@ function bindPopup(l) {
         }
         if (l.feature.geometry.type === 'LineString' || l.feature.geometry.type === 'MultiLineString' || l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
             
-            /* Left this code in place in case we need to add more complexity to the SDO's nightmare
+            /* Left this code in place in case we need to add more complexity to the SDO's nightmare*/
             
             if (!('stroke' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="color" value="#555555"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td id="strokecolor"><input type="color" value="#555555"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
+            /*
             if (!('stroke-width' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke-width"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="0" step="0.1" value="2"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
@@ -30699,10 +30715,10 @@ function bindPopup(l) {
             }
             if (!('threat_detail' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="threat_detail"' + (!writable ? ' readonly' : '') + ' /></th>'  +
-                    '<td><input type="text" list="threatDetail" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="threatDetail"><option value="35kt to 50 kt winds expected"><option value="less than 1 mile visibility expected"><option value="Tornadoes expected"></datalist> </td></tr>';
+                    '<td><input type="text" list="threatDetail" value="" onChange="getColor(this.value)";' + (!writable ? ' readonly' : '') + ' /><datalist id="threatDetail">' + criteriaValues + '</datalist> </td></tr>';
             }
             if (!('psi' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="psi"' + (!writable ? ' readonly' : '') + '/></th>' +  '<td><input type="text" list="psiOptions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="psiOptions"></datalist> </td></tr>';
+                table += '<tr class="style-row"><th><input type="text" value="psi"' + (!writable ? ' readonly' : '') + '/></th>' +  '<td><input type="text" list="psiOptions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="psiOptions">'+ psiValues +'</datalist> </td></tr>';
             }
             if (!('start-time' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="start-time"' + (!writable ? ' readonly' : '') + ' /></th>'  +
@@ -30712,6 +30728,7 @@ function bindPopup(l) {
                 table += '<tr class="style-row"><th><input type="text" value="end-time"' + (!writable ? ' readonly' : '') + ' /></th>'  +
                     '<td><input type="datetime-local" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
+            
             
         }
         
