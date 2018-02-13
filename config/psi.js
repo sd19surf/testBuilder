@@ -51,27 +51,28 @@ var criteria = {
 	  "name": "Tornado", "color": "0000ff"
 	},
 	{	
-	  "name": "Convective Winds >= 50 knots/Hail >= 3/4in", "color": "ff0000"
+	  "name": "'Convective Winds gte 50 knots or Hail gte .75in'", "color": "ff0000"
 	},
 	{
-	  "name": "Freezing Precipitation", "color": "9933ff"
+	  "name": "'Freezing Precipitation'", "color": "9933ff"
 	},
 	{
-	  "name": "Blizzard and or Heavy Snow", "color": "09C3F5"
+	  "name": "'Blizzard and or Heavy Snow'", "color": "09C3F5"
 	},
 	{
-	  "name": "Heavy Rain", "color": "66ff00"
+	  "name": "'Heavy Rain'", "color": "66ff00"
 	},
 	{
-	  "name": "Non-Convective Winds >= 50 knots", "color": "000000"
+	  "name": "'Non-Convective Winds gte 50 knots'", "color": "000000"
 	},
 	{
-	  "name": "Unsuitable Alternate - CIG/VIS(<1000/2)", "color": "ffff00"
+	  "name": "'Unsuitable Alternate - CIG or VIS(lt 1000 or lt 2)'", "color": "ffff00"
 	},
 	{
-	  "name": "Significant Tropical", "color": "ff9900"
+	  "name": "'Significant Tropical'", "color": "ff9900"
 	},
 	{
-	  "name": "Convective Winds >= 35 knots but < 50 knots/Hail < 3/4in", "color": "347940"
+	  "name": "'Convective Winds gte 35 knots but lt 50 knots or Hail gte .75in'", "color": "347940"
 	}
-
+ ]
+};
