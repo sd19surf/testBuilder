@@ -4642,7 +4642,7 @@ function metatable() {
                         }
                     });
                 colbutton.append('span').attr('class', 'icon-plus');
-                colbutton.append('span').text(' new column');
+                //colbutton.append('span').text(' new column');
 
                 var enter = sel.selectAll('table').data([d]).enter().append('table');
                 var thead = enter.append('thead');
@@ -4692,9 +4692,9 @@ function metatable() {
 
                 delbutton.on('click', deleteClick);
                 delbutton.append('span').attr('class', 'icon-minus');
-                delbutton.append('span').text(' delete');
+                //delbutton.append('span').text(' delete');
 
-                renamebutton.append('span').text(' rename');
+                //renamebutton.append('span').text(' rename');
                 renamebutton.on('click', renameClick);
 
                 function deleteClick(d) {
@@ -29328,9 +29328,7 @@ module.exports = function(context) {
 var marked = require('marked');
 
 module.exports = function(context) {
-    var html = Buffer("PGgyPkhlbHA8L2gyPgoKPHA+TmV3IGhlcmU/IDxzdHJvbmc+Z2VvanNvbi5pbzwvc3Ryb25nPiBpcyBhIHF1aWNrLCBzaW1wbGUgdG9vbCBmb3IgY3JlYXRpbmcsCnZpZXdpbmcsIGFuZCBzaGFyaW5nIG1hcHMuIGdlb2pzb24uaW8gaXMgbmFtZWQgYWZ0ZXIgPGEgaHJlZj0naHR0cDovL2dlb2pzb24ub3JnLycgdGFyZ2V0PSdfYmxhbmsnPkdlb0pTT048L2E+LAphbiBvcGVuIHNvdXJjZSBkYXRhIGZvcm1hdCwgYW5kIGl0IHN1cHBvcnRzIEdlb0pTT04gaW4gYWxsIHdheXMgLSBidXQgYWxzbwphY2NlcHRzIEtNTCwgR1BYLCBDU1YsIEdURlMsIFRvcG9KU09OLCBhbmQgb3RoZXIgZm9ybWF0cy48L3A+Cgo8cD5OZWVkIGV4dHJhIGhlbHAgb3Igc2VlIGEgYnVnPyA8YSB0YXJnZXQ9J19ibGFuaycgaHJlZj0naHR0cHM6Ly9naXRodWIuY29tL21hcGJveC9nZW9qc29uLmlvL2lzc3Vlcz9zdGF0ZT1vcGVuJz5PcGVuIGFuIGlzc3VlCiAgICBvbiBnZW9qc29uLmlvJ3MgaXNzdWUgdHJhY2tlci48L2E+Cgo8aDM+SSd2ZSBnb3QgZGF0YTwvaDM+Cgo8cD5JZiB5b3UgaGF2ZSBkYXRhLCBsaWtlIGEgS01MLCBHZW9KU09OLCBvciBDU1YgZmlsZSwganVzdCBkcmFnICZhbXA7IGRyb3AKaXQgb250byB0aGUgcGFnZSBvciBjbGljayAnT3BlbicgYW5kICdGaWxlJyAtIHlvdXIgZGF0YSBzaG91bGQgYXBwZWFyIG9uCnRoZSBtYXAhPC9wPgoKPGgzPkkgd2FudCB0byBkcmF3IGZlYXR1cmVzPC9oMz4KCjxwPkNsaWNrIHRoZSBkcmF3aW5nIHRvb2xzIG9uIHRoZSBsZWZ0LWhhbmQgc2lkZSB0byBkcmF3IHBvaW50cywgcG9seWdvbnMsCmxpbmVzIGFuZCByZWN0YW5nbGVzLiBBZnRlciB5b3UncmUgZG9uZSBkcmF3aW5nIHRoZSBzaGFwZXMsIHlvdSBjYW4gYWRkCmluZm9ybWF0aW9uIHRvIGVhY2ggZmVhdHVyZSBieSBjbGlja2luZyBvbiBpdCwgZWRpdGluZyB0aGUgZmVhdHVyZSdzIHByb3BlcnRpZXMsCmFuZCBjbGlja2luZyAnU2F2ZScuPC9wPgoKPHA+UHJvcGVydGllcyBpbiBHZW9KU09OIGFyZSBzdG9yZWQgYXMgJ2tleSB2YWx1ZSBwYWlycycgLSBzbywgZm9yIGluc3RhbmNlLAppZiB5b3Ugd2FudGVkIHRvIGFkZCBhIG5hbWUgdG8gZWFjaCBmZWF0dXJlLCB0eXBlICduYW1lJyBpbiB0aGUgZmlyc3QgdGFibGUKZmllbGQsIGFuZCB0aGUgbmFtZSBvZiB0aGUgZmVhdHVyZSBpbiB0aGUgc2Vjb25kLjwvcD4KCjxoMz5JIHdhbnQgdG8gdXNlIG15IG1hcCBldmVyeXdoZXJlPC9oMz4KCjxwPllvdSBjYW4gc2hhcmUgbWFwcyBpbiBxdWl0ZSBhIGZldyB3YXlzISBJZiB5b3Ugc2F2ZSB5b3VyIG1hcCBoZXJlLCB0aGUgVVJMCm9mIHRoaXMgcGFnZSB3aWxsIHVwZGF0ZSBhbmQgeW91IGNhbiBsaW5rIHNlbmQgZnJpZW5kcyB0aGUgbGluayB0byBzaGFyZQp0aGUgbWFwLCBvciB5b3UgY2FuIGNsaWNrICdEb3dubG9hZCcgdG8gZ3JhYiB0aGUgcmF3IEdlb0pTT04gZGF0YSBhbmQgdXNlCml0IGluIG90aGVyIHNvZnR3YXJlLCBsaWtlIFRpbGVNaWxsIG9yIExlYWZsZXQuPC9wPgoKPGgzPkknbSBhIGNvZGVyPC9oMz4KCjxwPjxhIGhyZWY9JyNnZW9qc29uLWlvLWFwaSc+Z2VvanNvbi5pbyBoYXMgYW4gYXJyYXkgb2YgY2xpIHRvb2xzPC9hPgp0aGF0IG1ha2UgaXQgZWFzeSB0byBnbyBmcm9tIGEgR2VvSlNPTiBmaWxlIG9uIHlvdXIgY29tcHV0ZXIgdG8gZ2VvanNvbi5pby4KCjxoMz5Qcm90aXBzPzwvaDM+Cgo8dWw+CiAgICA8bGk+PHN0cm9uZz5jbWQrczwvc3Ryb25nPjogc2F2ZSBtYXAgdG8gZ2l0aHViIGdpc3RzCiAgICA8bGk+PHN0cm9uZz5jbWQrYTwvc3Ryb25nPjogZG93bmxvYWQgbWFwIGFzIGdlb2pzb24KICAgIDxsaT48c3Ryb25nPmFycm93IGtleXM8L3N0cm9uZz46IG5hdmlnYXRlIHRoZSBtYXAKPC91bD4KCjxoMz5Qcml2YWN5ICZhbXA7IExpY2Vuc2UgSXNzdWVzPC9oMz4KCjx1bD4KICAgIDxsaT48c3Ryb25nPkNsaWNraW5nIHNhdmU8L3N0cm9uZz4gYnkgZGVmYXVsdCBzYXZlcyB0byBhIHByaXZhdGUKICAgIEdpdEh1YiBHaXN0IC0gc28gaXQgd2lsbCBvbmx5IGJlIGFjY2Vzc2libGUgdG8gcGVvcGxlIHlvdSBzaGFyZSB0aGUgVVJMCiAgICB3aXRoLCBhbmQgY3JlYXRpbmcgaXQgd29uJ3QgYXBwZWFyIGluIHlvdXIgR2l0SHViIHRpbWVsaW5lLgogICAgPGxpPjxzdHJvbmc+VGhlIGRhdGEgeW91IGNyZWF0ZSBhbmQgbW9kaWZ5IGluIGdlb2pzb24uaW88L3N0cm9uZz4gZG9lc24ndAogICAgYWNxdWlyZSBhbnkgYWRkaXRpb25hbCBsaWNlbnNlOiBpZiBpdCdzIHNlY3JldCBhbmQgY29weXJpZ2h0ZWQsIGl0IHdpbGwgcmVtYWluCiAgICB0aGF0IHdheSAtIGl0IGRvZXNuJ3QgaGF2ZSB0byBiZSBwdWJsaWMgb3Igb3BlbiBzb3VyY2UuCjwvdWw+Cg==","base64") +
-        '<br><hr><br>' +
-        marked("## Geojson.io API\nYou can interact with geojson.io programmatically in two ways:\n\n* [URL parameters](#url-api)\n* [Browser console](#console-api)\n* [Protips](#protips)\n\n## URL API\nYou can do a few interesting things with just URLs and geojson.io. Here are the\ncurrent URL formats.\n\n### `map`\n\nOpen the map at a specific location. The argument is numbers separated by `/`\nin the form `zoom/latitude/longitude`.\n\n#### Example:\n\nhttp://geojson.io/#map=2/20.0/0.0\n\n\n### `data=data:application/json,`\n\nOpen the map and load a chunk of [GeoJSON](http://geojson.org/) data from a\nURL segment directly onto the map. The GeoJSON data should be encoded\nas per `encodeURIComponent(JSON.stringify(geojson_data))`.\n\n#### Example:\n\nhttp://geojson.io/#data=data:application/json,%7B%22type%22%3A%22LineString%22%2C%22coordinates%22%3A%5B%5B0%2C0%5D%2C%5B10%2C10%5D%5D%7D\n\n\n### `data=data:text/x-url,`\n\nLoad GeoJSON data from a URL on the internet onto the map. The URL must\nrefer directly to a resource that is:\n\n* Freely accessible (not behind a password)\n* Supports [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)\n* Is valid GeoJSON\n\nThe URL should be encoded as per `encodeURIComponent(url)`.\n\n#### Example:\n\nhttp://geojson.io/#data=data:text/x-url,http%3A%2F%2Fapi.tiles.mapbox.com%2Fv3%2Ftmcw.map-gdv4cswo%2Fmarkers.geojson\n\n\n### `id=gist:`\n\nLoad GeoJSON data from a [GitHub Gist](https://gist.github.com/), given an argument\nin the form of `login/gistid`. The Gist can be public or private, and must\ncontain a file with a `.geojson` extension that is valid GeoJSON.\n\n#### Example:\n\nhttp://geojson.io/#id=gist:tmcw/e9a29ad54dbaa83dee08&map=8/39.198/-76.981\n\n\n### `id=github:`\n\nLoad a file from a GitHub repository. You must have access to the file, and\nit must be valid GeoJSON.\n\nThe url is in the form:\n\n    login/repository/blob/branch/filepath\n\n#### Example:\n\nhttp://geojson.io/#id=github:benbalter/dc-wifi-social/blob/master/bars.geojson&map=14/38.9140/-77.0302\n\n## Console API\n\n[Pop open your browser console](http://debugbrowser.com/) and see the beautiful\nexamples: geojson.io has started to expose a subset of its inner workings for\nyou to mess around with:\n\n\n### `window.api.map`\n\nThe [Leaflet](http://leafletjs.com/) map that you see and use on the site. See\nthe [Leaflet API](http://leafletjs.com/reference.html) for all the things you\ncan do with it.\n\nFor instance, you could add another map layer:\n\n```js\nwindow.api.map.addLayer(L.tileLayer('http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'))\n```\n\n### `window.api.data`\n\nThe data model. See the [code to get an idea of how it works](https://github.com/mapbox/geojson.io/blob/gh-pages/src/core/data.js#L48-L90) -\nyou'll want to use stuff like `data.set({ map: { .. your geojson map information .. })`\nand `data.get('map')` and `data.mergeFeatures([arrayoffeatures])` to do your\ndirty business.\n\n## `window.api.mapLayer`\n\nThis is the Leaflet featureGroup that gets filled with features as you draw\nthem. You can operate on this directly to do advanced stuff like\nselecting a feature with its id:\n\n```js\nvar layers = [];\nwindow.api.mapLayer.eachLayer(l => { layers.push(l); });\nlayers.find(l => l.feature.id == 'a').openPopup();\n```\n\nThat example uses [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)\nwhich are supported in Chrome & Firefox.\n\n## `window.api.drawControl`\n\nExposes the [Leaflet.Draw](https://github.com/Leaflet/Leaflet.draw) control\ninstance in the console.\n\n## `window.api.on(event, fn)`\n\nExposes d3 events, including `change`.\n\n## Protips\n\nTo include `turf` from [turf](https://github.com/turfjs/turf) so you can manipulate features\nwith its GIS features, run this in the CLI, which will download the script and evaluate it.\n\n```js\nfetch('https://npmcdn.com/@turf/turf@3.1.1/turf.js').then(t => t.text()).then(eval)\n```\n");
+    var html = Buffer("PGgyPkhlbHA8L2gyPg0KDQo8cD5GdXR1cmUgSGVyZSBpcyB0byBwcm92aWRlIHRoZSBpbmZvcm1hdGlvbiB0byBTRE9zIG9uIGhvdyB0byBzYXZlLCBDT09QIGFuZCBzaGFyZSB0aGUgPHN0cm9uZz5UaHJlYXQgQXNzZXNzbWVudCBJbmZvcm1hdGlvbiA8L3N0cm9uZz4gPC9wPg==","base64");
     function render(selection) {
         var area = selection
             .html('')
@@ -29614,7 +29612,7 @@ function save(context, callback) {
 
     if (navigator.appVersion.indexOf('MSIE 9') !== -1 || !window.XMLHttpRequest) {
         return alert('Sorry, saving and sharing is not supported in IE9 and lower. ' +
-            'Please use a modern browser to enjoy the full featureset of geojson.io');
+            'Please use a modern browser to enjoy the full featureset of 1WXG Threat Tool');
     }
 
     if (!localStorage.github_token) {
@@ -30697,11 +30695,11 @@ function bindPopup(l) {
             
             /* Left this code in place in case we need to add more complexity to the SDO's nightmare*/
             
-            if (!('stroke' in properties)) {
+           /* if (!('stroke' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td name="strokecolor"><input type="color" value="#555555"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
-            /*
+            
             if (!('stroke-width' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke-width"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="0" step="0.1" value="2"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
@@ -30721,12 +30719,12 @@ function bindPopup(l) {
             if (!('psi' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="psi"' + (!writable ? ' readonly' : '') + '/></th>' +  '<td><input type="text" list="psiOptions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="psiOptions">'+ psiValues +'</datalist> </td></tr>';
             }
-            if (!('start-time' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="start-time"' + (!writable ? ' readonly' : '') + ' /></th>'  +
+            if (!('start_time' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="start_time"' + (!writable ? ' readonly' : '') + ' /></th>'  +
                     '<td><input type="datetime-local" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
-            if (!('end-time' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="end-time"' + (!writable ? ' readonly' : '') + ' /></th>'  +
+            if (!('end_time' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="end_time"' + (!writable ? ' readonly' : '') + ' /></th>'  +
                     '<td><input type="datetime-local" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             
@@ -30772,7 +30770,7 @@ function bindPopup(l) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" max="1" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
         }
-        else if ((key == 'start-time' || key == 'end-time') && writable) {
+        else if ((key == 'start_time' || key == 'end_time') && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="datetime-local" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
         }
@@ -30971,7 +30969,7 @@ module.exports = function(selection, blocking) {
 },{}],190:[function(require,module,exports){
 var table = require('../panel/table'),
     json = require('../panel/json'),
-    help = require('../panel/help');
+    help = require('../panel/help'),  chat = require('../panel/chat');
 
 module.exports = function(context, pane) {
     return function(selection) {
@@ -30993,7 +30991,11 @@ module.exports = function(context, pane) {
             title: ' Help',
             alt: 'Help',
             behavior: help
-        }];
+        },{
+            icon: 'code',
+            title: ' RedChat',
+            alt: 'Chat Services',
+            behavior: chat        }];
 
         var buttons = selection
             .selectAll('button')
@@ -31020,7 +31022,7 @@ module.exports = function(context, pane) {
     };
 };
 
-},{"../panel/help":176,"../panel/json":177,"../panel/table":178}],191:[function(require,module,exports){
+},{"../panel/chat":179,"../panel/help":176,"../panel/json":177,"../panel/table":178}],191:[function(require,module,exports){
 var flash = require('./flash');
 
 module.exports = function(context) {
