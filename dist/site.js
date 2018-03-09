@@ -30563,7 +30563,8 @@ for (var i = 0; i < criteria.Criteria.length; i++) {
 }
 
 function getColor(threatType){
-    document.getElementById("strokecolor").innerHTML = '<input type="color" value="#'+ criteria.Criteria[threatType].color +'"' + (!writable ? ' readonly' : '') + ' />"';
+    console.log(criteria.Criteria[threatType].value);
+    //document.getElementsByName("strokecolor").innerHTML= '<input type="color" value="#' + criteria.Criteria[threatType].value + '"'' + (!writable ? '' readonly'' : '') + '' />';
 }
 module.exports = function(context, readonly) {
 
@@ -30698,7 +30699,7 @@ function bindPopup(l) {
             
             if (!('stroke' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td id="strokecolor"><input type="color" value="#555555"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td name="strokecolor"><input type="color" value="#555555"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             /*
             if (!('stroke-width' in properties)) {
@@ -30715,7 +30716,7 @@ function bindPopup(l) {
             }
             if (!('threat_detail' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="threat_detail"' + (!writable ? ' readonly' : '') + ' /></th>'  +
-                    '<td><input type="text" list="threatDetail" value="" onChange="getColor(this.value)";' + (!writable ? ' readonly' : '') + ' /><datalist id="threatDetail">' + criteriaValues + '</datalist> </td></tr>';
+                    '<td><input type="text" list="threatDetail" value="" onChange="getColor(this.value)"' + (!writable ? ' readonly' : '') + ' /><datalist id="threatDetail">' + criteriaValues + '</datalist> </td></tr>';
             }
             if (!('psi' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="psi"' + (!writable ? ' readonly' : '') + '/></th>' +  '<td><input type="text" list="psiOptions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="psiOptions">'+ psiValues +'</datalist> </td></tr>';
