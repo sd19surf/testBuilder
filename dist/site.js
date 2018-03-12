@@ -29328,6 +29328,7 @@ module.exports = function(context) {
 var marked = require('marked');
 
 module.exports = function(context) {
+    // change the html variable in base64 to the html you want rendered in the help tab.
     var html = Buffer("PGgyPkhlbHA8L2gyPg0KDQo8cD5GdXR1cmUgSGVyZSBpcyB0byBwcm92aWRlIHRoZSBpbmZvcm1hdGlvbiB0byBTRE9zIG9uIGhvdyB0byBzYXZlLCBDT09QIGFuZCBzaGFyZSB0aGUgPHN0cm9uZz5UaHJlYXQgQXNzZXNzbWVudCBJbmZvcm1hdGlvbiA8L3N0cm9uZz4gPC9wPg==","base64");
     function render(selection) {
         var area = selection
@@ -30785,7 +30786,7 @@ function bindPopup(l) {
         if (l.feature.geometry.type === 'LineString') {
             var total = d3.pairs(l.feature.geometry.coordinates).reduce(function(total, pair) {
                 return total + L.latLng(pair[0][1], pair[0][0])
-                    .distanceTo(L.latLng(pair[1][1], pair[1][0]));
+                   .distanceTo(L.latLng(pair[1][1], pair[1][0]));
             }, 0);
             info += '<tr><td>Meters</td><td>' + total.toFixed(2) + '</td></tr>' +
                     '<tr><td>Kilometers</td><td>' + (total / 1000).toFixed(2) + '</td></tr>' +
@@ -30800,7 +30801,8 @@ function bindPopup(l) {
                   '<tr><td>Sq. Kilometers</td><td>' + (LGeo.area(l) / 1000000).toFixed(2) + '</td></tr>' +
                   '<tr><td>Sq. Feet</td><td>' + (LGeo.area(l) / 0.092903).toFixed(2) + '</td></tr>' +
                   '<tr><td>Acres</td><td>' + (LGeo.area(l) / 4046.86).toFixed(2) + '</td></tr>' +
-                  '<tr><td>Sq. Miles</td><td>' + (LGeo.area(l) / 2589990).toFixed(2) + '</td></tr>';
+                  '<tr><td>Sq. Miles</td><td>' + (LGeo.area(l) / 2589990).toFixed(2) + '</td></tr>' +
+                  '<tr><td>Stations Affected</td><td>Test</td></tr>';
         }
         info += '</table>';
     }
@@ -30969,7 +30971,8 @@ module.exports = function(selection, blocking) {
 },{}],190:[function(require,module,exports){
 var table = require('../panel/table'),
     json = require('../panel/json'),
-    help = require('../panel/help'),  chat = require('../panel/chat');
+    help = require('../panel/help'),
+    chat = require('../panel/chat');
 
 module.exports = function(context, pane) {
     return function(selection) {
