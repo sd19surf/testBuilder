@@ -1,6 +1,14 @@
 ﻿require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports=[
     {
+        "name": "Low Pressure",
+        "tags": [
+            "low",
+            "Low"
+        ],
+        "icon": "low"
+    },
+    {
         "name": "Circle stroked",
         "tags": [
             "circle",
@@ -30637,11 +30645,15 @@ module.exports = function(context, readonly) {
 
     return map;
 };
-
+    
+// add threat parsing here to display previous threats correctly
 function geojsonToLayer(geojson, layer) {
     layer.clearLayers();
     L.geoJson(geojson, {
-        style: L.mapbox.simplestyle.style,
+        style: 
+        L.mapbox.simplestyle.style
+        
+        ,
         pointToLayer: function(feature, latlon) {
             if (!feature.properties) feature.properties = {};
             return L.mapbox.marker.style(feature, latlon);
@@ -30678,7 +30690,28 @@ function bindPopup(l) {
 
     if (l.feature && l.feature.geometry && writable) {
         if (l.feature.geometry.type === 'Point' || l.feature.geometry.type === 'MultiPoint') {
-            if (!('marker-color' in properties)) {
+            
+             if (!('presure-center' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="pressure-center"' + (!writable ? ' readonly' : '') + ' /></th>'  +
+                    '<td><input type="text" list="pressure-center" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="pressure-center"><option value="Low"><option value="High"><option value="Typhoon"><option value="Tropical Storm"><option value="Hurricane"></datalist> </td></tr>';
+            }
+            
+             if (!('presure-value' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="pressure-value"' + (!writable ? ' readonly' : '') + ' /></th>'  +
+                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            
+            if (!('start_time' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="start_time"' + (!writable ? ' readonly' : '') + ' /></th>'  +
+                    '<td><input type="datetime-local" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('end_time' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="end_time"' + (!writable ? ' readonly' : '') + ' /></th>'  +
+                    '<td><input type="datetime-local" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            
+                     
+           /* if (!('marker-color' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="marker-color"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="color" value="#7E7E7E"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
@@ -30689,10 +30722,28 @@ function bindPopup(l) {
             if (!('marker-symbol' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="marker-symbol"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" list="marker-symbol" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-symbol">' + maki + '</datalist></td></tr>';
-            }
+            }*/
             
         }
-        if (l.feature.geometry.type === 'LineString' || l.feature.geometry.type === 'MultiLineString' || l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
+        
+        
+         if (l.feature.geometry.type === 'LineString' || l.feature.geometry.type === 'MultiLineString') {
+            if (!('front_type' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="front_type"' + (!writable ? ' readonly' : '') + ' /></th>'  +
+                    '<td><input type="text" list="front_type" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="front_type"><option value="Cold"><option value="Warm"><option value="Stationary"><option value="Occluded"</datalist> </td></tr>';
+            }
+            if (!('start_time' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="start_time"' + (!writable ? ' readonly' : '') + ' /></th>'  +
+                    '<td><input type="datetime-local" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('end_time' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="end_time"' + (!writable ? ' readonly' : '') + ' /></th>'  +
+                    '<td><input type="datetime-local" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+             
+        
+        }
+        if (l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
             
             /* Left this code in place in case we need to add more complexity to the SDO's nightmare*/
             
@@ -30708,14 +30759,14 @@ function bindPopup(l) {
             if (!('stroke-opacity' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke-opacity"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="0" max="1" step="0.1" value="1"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-            }*/
+            }
             if (!('threat' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="threat"' + (!writable ? ' readonly' : '') + ' /></th>'  +
-                    '<td><input type="text" list="threat" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="threat"><option value="High Winds"><option value="Duststorm"><option value="Tornado"></datalist> </td></tr>';
-            }
+                    '<td><input type="text" list="threat" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="threat"><option value="High Winds"><option value="Duststorm"><option value="Tornado"></datalist> </td></tr>'; // test threat dropdown
+            }*/
             if (!('threat_detail' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="threat_detail"' + (!writable ? ' readonly' : '') + ' /></th>'  +
-                    '<td><input type="text" list="threatDetail" value="" onChange="getColor(this.value)"' + (!writable ? ' readonly' : '') + ' /><datalist id="threatDetail">' + criteriaValues + '</datalist> </td></tr>';
+                    '<td><input type="text" list="threatDetail" value="" onChange="getColor(this.value)"' + (!writable ? ' readonly' : '') + ' /><datalist id="threatDetail">' + criteriaValues + '</datalist> </td></tr>'; // uses a config listing
             }
             if (!('psi' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="psi"' + (!writable ? ' readonly' : '') + '/></th>' +  '<td><input type="text" list="psiOptions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="psiOptions">'+ psiValues +'</datalist> </td></tr>';
