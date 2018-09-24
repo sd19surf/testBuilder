@@ -30495,6 +30495,10 @@ module.exports = function(context) {
                 title: 'Satellite',
                 layer: L.mapbox.tileLayer('mapbox.satellite')
             },{
+                title: 'Offine Map',
+                layer: L.mapbox.featureLayer().loadURL('/testBuilder/dist/world.geojson')
+
+            },{
                 title: 'OCM',
                 layer: L.tileLayer('https://a.tile.thunderforest.com/cycle/{z}/{x}/{y}.png', {
                    attribution: 'Maps &copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, Data &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
